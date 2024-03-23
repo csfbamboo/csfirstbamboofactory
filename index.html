@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="image/icon/SaintVincentFerrer CSFBamboo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+
+    <title>Home | CSFirst Bamboo Factory</title>
+
+    <style>
+
+        *{
+            font-family: 'Montserrat';
+            box-sizing: border-box;
+        }
+
+        html{
+            overflow-x: hidden;
+            scroll-padding-top: 10rem;
+            scroll-behavior: smooth;
+            transition: all 0.9s linear;
+        }  
+
+       body {
+            background: url(image/backgrounds/header/header_bgwhite2.png);
+            background-size: cover;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            box-shadow:0.5rem 0.5rem 0.5rem rgba(0,0,0,.2);
+        }
+
+        /*                ------- header -------                  */
+
+        .header-home {
+            position: relative; 
+            width: 100%;
+            z-index: 1000;
+            background: url(image/backgrounds/header/header_bgwhite2.png);
+            background-size: cover;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left{
+            display: flex;
+            align-items: center;
+            margin-right: 100px;
+            padding-right: 200px;
+        }
+
+        .header-right{
+            margin-left: 250px;
+        }
+
+        .tag-container{
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tag-container:hover{
+            cursor: default;
+        }
+
+        .tag-firstline{
+            font-size: 25px;
+            font-weight: bolder;
+        }
+        .tag-secondline{
+            font-weight: bolder;
+            font-size: 25px;
+            margin-left: 50px;
+        }
+
+        .nav-border {
+            margin-top: 10px;
+            padding: 0%;
+            align-items: start;
+            flex-direction: column;
+        }
+
+        .nav-logo {
+            width: 160px;
+            height: 73px;
+            margin: 30px 180px;
+            margin-right: 23px;
+        }
+
+        .page-name {
+            font-size: 25px;
+            color: #004926;
+            font-weight: bolder;
+            margin-top: 0%;
+            margin-bottom: 0%;
+        }
+
+        .page-name:hover{
+            cursor: default;
+        }
+
+        .factory-address{
+            font-weight: 500;
+            font-size: 11px;
+            color: #004926;
+            margin-top: 5px;
+        }
+        .factory-address:hover{
+            cursor: default;
+        }
+
+
+         /*                ------- header ends here -------                  */
+
+         /*                ------- Navigation Bar  -------                  */
+
+         .navigation-head {
+            position: absolute; 
+            top: 128px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 5px;
+            display: flex;
+            background-color: #004926;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-button {
+            margin: 7px 70px;
+            color: white;
+            font-size: 15px;
+            padding: 5px 10px;
+            font-weight: 500;
+            transition: 0.2s ease;
+            background: none;
+            border: none;
+            position: relative;
+        }
+
+        .nav-button:hover {
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+            color:#40a829;
+            text-decoration: underline;
+        }
+        .nav-button:focus {
+            border: none;
+            border-radius: 3px;
+            transform: scale(1.1);
+            padding: 5px 10px;
+            cursor: pointer;
+            color:white;
+            text-decoration: underline;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+         /*                ------- Navigation Bar ends here  -------                  */
+
+        /*      ------ Drop Down Menu ---------- */
+
+        .dropdown-products{
+            position: absolute;
+            margin-left: 260px;
+            left:0;
+            top: calc(100% + 0.25rem);
+            padding: 1rem .80rem;
+            padding-left: .5rem;
+            border-radius: .20rem;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1rem);
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+
+        .product-button-home{
+            color:#004926;
+            font-size: 15px;
+            background: none;
+            border: none;
+            text-align: start;
+            text-transform: uppercase;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 2px 6px;
+            transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.3s ease, font-weight 0.3s ease;
+            position: relative;
+        }
+
+        .product-button-home::before,
+        .product-button-home::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background-color: #004926; /* Color of the underline */
+            transform: scaleX(0); /* Initially set the underline width to 0 */
+            transform-origin: center; /* Set transform origin to center */
+            transition: transform 0.3s ease; /* Add transition for smooth effect */
+        }
+
+        .product-button-home::before {
+            top: 0; /* Position the ::before pseudo-element at the top */
+        }
+
+        .product-button-home::after {
+            bottom: -2px; /* Position the ::after pseudo-element slightly below the text */
+        }
+
+        .product-button-home:hover::before,
+        .product-button-home:hover::after {
+            transform: scaleX(1); /* Expand the underline width to full width on hover */
+        }
+
+        .product-button-home:hover {
+            color: #004926; /* Change text color on hover */
+        }
+        .nav-container > .nav-button:focus + .dropdown-products {
+            opacity: 1; 
+        }
+
+        .dropdown-more{
+            position: absolute;
+            margin-left: 1000px;
+            left:0;
+            top: calc(100% + 0.80rem);
+            padding: 1rem .80rem;
+            padding-left: .5rem;
+            border-radius: .20rem;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1rem);
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+
+        .more-button-home{
+            color:#004926;
+            font-size: 15px;
+            background: none;
+            border: none;
+            text-align: start;
+            text-transform: uppercase;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 2px 6px;
+            transition: color 0.3s ease, text-decoration 0.3s ease, transform 0.3s ease, font-weight 0.3s ease;
+            position: relative;
+        }
+
+        .more-button-home::before,
+        .more-button-home::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background-color: #004926; /* Color of the underline */
+            transform: scaleX(0); /* Initially set the underline width to 0 */
+            transform-origin: center; /* Set transform origin to center */
+            transition: transform 0.3s ease; /* Add transition for smooth effect */
+        }
+
+        .more-button-home::before {
+            top: 0; /* Position the ::before pseudo-element at the top */
+        }
+
+        .more-button-home::after {
+            bottom: -2px; /* Position the ::after pseudo-element slightly below the text */
+        }
+
+        .more-button-home:hover::before,
+        .more-button-home:hover::after {
+            transform: scaleX(1); /* Expand the underline width to full width on hover */
+        }
+
+        .more-button-home:hover {
+            color: #004926; /* Change text color on hover */
+        }
+        .nav-container > .nav-button:focus + .dropdown-more {
+            opacity: 1; 
+        }
+    
+        /*      ------ Drop Down Menu ends here ---------- */
+         /*                ------- What We Offer  -------                  */
+         .tagline{
+            position: absolute;
+            top: 45%;
+            left: 5%;
+            transform: translate(-10%, -30%);
+            z-index: 1;
+        }
+        .tagline:hover{
+            cursor: default;
+        }
+
+        .tag-description-head{
+            position: relative;
+            color: white;
+            font-size: 50px;
+            margin-right: 500px;
+            margin-left: 200px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow:0.3rem 0.3rem 0.3rem rgba(0,0,0,.2);
+        }
+
+        .tag-description{
+            position: relative;
+            color: white;
+            font-size: 30px;
+            margin-right: 500px;
+            margin-left: 200px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-shadow:0.3rem 0.3rem 0.3rem rgba(0,0,0,.2);
+        }
+
+        .learn-more{
+            padding: 10px 70px;
+            font-size: 18px;
+            font-weight:700;
+            margin-top: 20px;
+            margin-bottom: 100px;
+            margin-left: 200px;
+            border: none;
+            border-radius: 4px;
+            background-color:#004926;
+            color: white;
+            transition: background-color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .learn-more:hover{
+            background-color:#00240f;
+            text-shadow:0.3rem 0.3rem 0.3rem rgba(0,0,0,.2);
+        }
+
+        .vid-background-home{
+            filter: brightness(0.7);
+            position: relative;
+            margin-top: 10px;
+        }
+
+         /*                ------- What We Offer  ends here -------                  */
+
+
+         /*             ---------Mini Info Details ---------- */
+
+         .mini-info-container{
+            display: flex;
+            justify-content: space-evenly;
+
+         }
+
+         .mini-info-details{
+            align-items: center;
+            text-align: center;
+         }
+        
+         /*             ---------Mini Info Details end here ---------- */
+        
+        
+         /* Color Palette */
+        .color-palette-container{
+            padding-top: 10px;
+            margin-top: 0%;
+            background-color: #e0e0e0;
+            padding-bottom: 100px;
+        }
+
+        .title-color{
+            margin-top: 20px;
+            color: #004926;
+            font-size: 50px;
+            margin-left: 150px;
+            margin-right: 900px;
+            margin-bottom: 50px;
+            text-shadow:0.2rem 0.2rem 0.2rem rgba(0,0,0,.2);
+        }
+        
+        .color-palette-colors {
+            margin-left: 150px;
+            margin-right: 150px;
+            display:flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .palette-pic img{
+            width: 50px;
+            height: 50px;
+        }
+
+        .palette-pic{
+            text-align: center;
+            margin-top: 0%;
+            font-weight: 600;
+            font-size: 10px;
+            transition: 0.3s ease;
+        }
+
+        .palette-pic:hover {
+            transform: scale(1.8);
+            text-shadow:0.1rem 0.1rem 0.1rem rgba(0,0,0,.2);
+        }
+
+        /* Color Palette */
+       
+        a:hover{
+            cursor: default;
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <header class="header-home">
+        <div class="header-left">
+        <a href="index.html"><img class="nav-logo" src="image//icon/CSFirstBambooFactory Final.png" alt="CSFirst Bamboo Factory Logo"></a>
+            <div class="nav-border">
+                <p class="page-name" alt="CSFirst Bamboo Products" >BAMBOO PRODUCTS</p>
+                <p class="factory-address" alt="CSFirst Bamboo Products" ><i class ="fa-solid fa-location-dot"></i> Barangay Amanperez, Bayambang, Pangasinan, Philippines 2423</p>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="tag-container">
+                    <i class="tag-firstline" style="color:white">
+                    <span class="highlight" style ="color:#004926">"Where Innovation</span> 
+                    </i>
+                    <br>
+                    <i class="tag-secondline" style="color:white">
+                        <span class="highlight" style ="color:#004926">meets Sustainability"</span>
+                    </i>
+
+            </div>
+        </div>
+       
+    
+
+    </header>
+    
+   
+    <nav class="navigation-head">
+            <div class="nav-container">      
+                    <a href="index.html"><button class="nav-button">HOME</button></a>
+                    <button class="nav-button">PRODUCTS</button>
+                        <div class="dropdown-products">
+                         <a href="https://www.modernbamboo.ph/bamboo-cladding/" target="_blank"><button class="product-button-home">Bamboo Floor Boards</button></a>
+                           <button class="product-button-home">Bamboo Cladding</button>
+                           <button class="product-button-home">Bamboo Columns</button>
+                           <button class="product-button-home">Bamboo Panels</button>
+                           <button class="product-button-home">Bamboo Vinyls</button>
+                           <button class="product-button-home">Bamboo Charcoal</button>
+                        </div>
+                    
+                        <a href="https://www.modernbamboo.ph/finished-projects/" target="_blank"><button class="nav-button">PORTFOLIO</button></a>
+                        <a href="https://www.modernbamboo.ph/contact-us/" target="_blank"><button class="nav-button">CONTACT</button></a>
+                    <button class="nav-button">MORE</button>
+                        <div class="dropdown-more">
+                            <button class="more-button-home">BLOG</button>
+                            <button class="more-button-home">FAQ</button>
+                        </div>
+            </div> 
+    </nav>
+
+    <div class="vid-background-home">
+        <video class="front-vid" autoplay loop muted src="vids/032011.mp4"></video>
+    </div>
+
+    <div class="tagline">
+                <p class="tag-description-head">
+                    WHAT WE OFFER?
+                </p>
+                <p class="tag-description">
+                                Our state-of the-art bamboo factory is a symphony of
+                precisiion and sustainability, where each board is a 
+                product of a finely-tuned 19-step process, ensuring 
+                unparalleled quality and eco-friendly excellence.
+                </p>
+                <p class="tag-description">
+                A wide array of products, from robust planks, modular
+                panel boards, innovative vinyl boards, structural columns,
+                and purifying charcoal. Each products, crafted through a 
+                precise 19-step process, showcases the versatility of bamboo.
+                </p>
+
+                <button class="learn-more">
+                        LEARN MORE
+                </button>
+    </div>
+
+
+    <div class="mini-info-main-container" >
+            <div class="mini-info-subcontainer">
+                <div class="mini-info-container">
+
+
+                    <div class="mini-info-details-card">
+                        <div class="mini-info-details">
+                            <span class="mini-info-icon" ><img src="image/icon/CSFirstBambooFactory Final.png" alt="" style="width: 200px; height:100px;"></img></span>
+                            <h4 class="mini-info-title">CAPTION HERE</h4>
+                            <p class="mini-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim ea provident dignissimos facilis id? Velit illum, tempora, perferendis.</p>
+                        </div>
+                    </div>
+
+                    <div class="mini-info-details-card">
+                        <div class="mini-info-details">
+                            <span class="mini-info-icon" ><img src="image/icon/CSFirstBambooFactory Final.png" alt="" style="width: 200px; height:100px;"></img></span>
+                            <h4 class="mini-info-title">CAPTION HERE</h4>
+                            <p class="mini-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim ea provident dignissimos facilis id? Velit illum, tempora, perferendis.</p>
+                        </div>
+                    </div>
+
+                    <div class="mini-info-details-card">
+                        <div class="mini-info-details">
+                            <span class="mini-info-icon" ><img src="image/icon/CSFirstBambooFactory Final.png" alt="" style="width: 200px; height:100px;"></img></span>
+                            <h4 class="mini-info-title">CAPTION HERE</h4>
+                            <p class="mini-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim ea provident dignissimos facilis id? Velit illum, tempora, perferendis.</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+    </div>
+    
+
+    <div class="color-palette-container">
+        <h3 class="title-color">Color Palette</h3>
+        <div class="color-palette-colors">
+           <div class="palette-pic">
+                <img src="image/Color Palettes/carbonized.png" alt="Carbonized">
+                <br>
+                <p class="color-bamboo">CARBONIZED</p>
+           </div>
+
+           <div class="palette-pic">
+                <img src="image/Color Palettes/natural.png" alt="Natural">
+                <br>
+                <p class="color-bamboo">NATURAL</p>
+           </div>
+
+           <div class="palette-pic">
+                <img src="image/Color Palettes/bleached.png" alt="Bleached">
+                <br>
+                <p class="color-bamboo">BLEACHED</p>
+           </div>
+
+           <div class="palette-pic">
+                <img src="image/Color Palettes/rosewood adi.png" alt="Rosewood Adi">
+                <br>
+                <p class="color-bamboo">ROSEWOOD ADI</p>
+           </div>
+
+           <div class="palette-pic">
+                <img src="image/Color Palettes/walnut brown.png" alt="Walnut Brown">
+                <br>
+                <p class="color-bamboo">WALNUT BROWN</p>
+           </div>
+
+           <div class="palette-pic">
+                <img src="image/Color Palettes/american walnut.png" alt="American Walnut">
+                <br>
+                <p class="color-bamboo">AMERICAN WALNUT</p>
+           </div>
+
+           <div class="palette-pic">
+                <img src="image/Color Palettes/midnight black.png" alt="Midnight Black">
+                <br>
+                <p class="color-bamboo">MIDNIGHT BLACK</p>
+           </div>
+        </div>
+    </div>
+    
+    
+    
+</body>
+</html>
+
